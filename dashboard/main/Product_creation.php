@@ -44,13 +44,23 @@
       -webkit-appearance: none;
       margin: 0;
     }
+
+    #submit{
+        background-color:#fe030c;
+        border:0px !important;
+    }
+
+    #submit:hover{
+        background-color:#bd001fd0;
+        border:0px !important;
+    }
   </style>
 
 </head>
 
 <body>
   <!-- tap on top starts-->
-  <div class="tap-top"><i data-feather="chevrons-up"></i></div>
+  <div class="tap-top" style="background-color:#fe030c;"><i data-feather="chevrons-up"></i></div>
   <!-- tap on tap ends-->
   <!-- Loader starts-->
   <div class="loader-wrapper">
@@ -205,7 +215,7 @@
 
 
                       <div class="card-footer text-end">
-                        <button class="btn btn-primary" style='display:none;' id="submit" type="submit">Submit</button>
+                        <button class="btn text-white" style='display:none;' id="submit" type="submit">Submit</button>
 
                       </div>
                     </div><!-- end row -->
@@ -445,6 +455,16 @@
                       var result = JSON.parse(response);
                       if(result.status == "Success"){
                         toastr.success("Product Created Successfully","Welcome !")
+
+                        $("#mainimg").files("");
+                        $("#addimg1").files("");
+                        $("#addimg2").files("");
+                        $("#addimg3").files("");
+                        $("#proname").val("");
+                        $("#proprice").val("");
+                        $("#procolor").val("");
+                        $("#prosize").val("");
+                        $("#prodes").val("");
                       }
                       else{
                         toastr.error("Unable To Create Product","Error")

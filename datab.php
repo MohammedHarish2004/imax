@@ -19,5 +19,5 @@
     $date     = date('Y-m-d');
     $dateTime = date('Y-m-d H:i:s');
 
-    $path = '/imax/';
+    $path = '/imax_git/';
 ?>
