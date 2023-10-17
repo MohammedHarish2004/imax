@@ -104,6 +104,7 @@
             <!--Header-->
             <?php include('header.php'); ?>
             <!--End Header-->
+            
             <!--Mobile Menu-->
           
             <!--End Mobile Menu-->
@@ -325,7 +326,7 @@
                                                 <!--End Product Vendor-->
                                                 <!-- Product Name -->
                                                 <div class="product-name">
-                                                    <a href="javascript:void(0)">Golden trophy</a>
+                                                    <a href="product_des.php">Golden trophy</a>
                                                 </div>
                                                 <!-- End Product Name -->
                                                 <!-- Product Price -->
