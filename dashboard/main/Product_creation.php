@@ -12,6 +12,9 @@
   <meta name="keywords"
     content="admin template, Tivo admin template, dashboard template, flat admin template, responsive admin template, web app">
   <meta name="author" content="pixelstrap">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
   <link rel="icon" href="../assets/images/favicon/favicon.png" type="image/x-icon">
   <link rel="shortcut icon" href="../assets/images/favicon/favicon.png" type="image/x-icon">
   <title>Tivo - Premium Admin Template</title>
@@ -45,14 +48,14 @@
       margin: 0;
     }
 
-    #submit{
-        background-color:#fe030c;
-        border:0px !important;
+    #submit {
+      background-color: #fe030c;
+      border: 0px !important;
     }
 
-    #submit:hover{
-        background-color:#bd001fd0;
-        border:0px !important;
+    #submit:hover {
+      background-color: #bd001fd0;
+      border: 0px !important;
     }
   </style>
 
@@ -104,14 +107,47 @@
           <div class="row">
             <div class="col-sm-12">
               <div class="card">
-                <div class="card-header pb-0">
-                  <h4></h4>
-                </div>
                 <div class="form theme-form">
-                  <div class="card-body">
-                    <div class="row">
+                  <!-- <div class="row"> -->
+                  <div class="row">
+                    <div class="card">
+                      <div class="card-body">
+                      <div class="table-responsive theme-scrollbar">
+  <table class="table" id="imageTable">
+    <thead>
+      <tr class="border-bottom-success">
+        <th scope="col">Image File</th>
+        <th scope="col">Image Preview</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="border-bottom-success" id="rowTemplate">
+        <td>
+          <input class="form-control mt-4 w-75 mainimg" style="border:.5px solid #9b9999;"
+            onchange="previewImage(this)" type="file" accept=".jpg, .jpeg, .png">
+          <p class="mt-3 fsize"></p>
+        </td>
+        <td><img class="mainprev" width="100%" height="100px"></td>
+        <td>
+          <!-- Empty container div for the delete button -->
+          <div class="delete-container mt-4"></div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <button class="btn btn-success mt-2 float-end" id="addImage">Add Image</button>
+</div>
 
-                      <div class="col-lg-6">
+
+
+
+
+
+                      </div>
+                    </div>
+
+                    <!-- <div class="col-lg-6">
                         <div class="mb-3">
                           <label class="form-label" for="mainimg">Main Image</label>
                           <input class="form-control" style="border:.5px solid #9b9999;" id="mainimg"
@@ -119,9 +155,13 @@
                           <p id="errorText" style="color: red;"></p>
                           <p id="fsize" class="mt-3"></p>
                         </div>
-                      </div><!-- end col -->
 
-                      <div class="col-lg-6">
+                        <div class="mb-3">
+                          <img id="mainprev" width="100%" height="300px">
+                        </div>
+                      </div> end col -->
+
+                    <!-- <div class="col-lg-6">
                         <div class="mb-3">
                           <label class="form-label" for="addimg">Additional Images</label>
                           <input class="form-control" style="border:.5px solid #9b9999;" id="addimg1" type="file"
@@ -136,351 +176,257 @@
                             onchange="previewaddImage(3)" accept=".jpg, .jpeg, .png">
                           <p id="fsize3" class="mt-3"></p>
                           <p id="errorText" style="color: red;"></p>
-                        </div>
-                      </div> <!-- end col -->
+                        </div> -->
 
-
-                    </div><!-- end row -->
-
-                    <div class="row">
-
-                      <div class="col-lg-6">
-                        <div class="mb-3">
-                          <img id="mainprev" width="100%" height="300px">
-                        </div>
-                      </div> <!-- end col -->
-
-
-                      <div class="col-lg-6">
-                        <div class="mb-3">
+                    <!-- <div class="mb-3">
                           <img id="addprev1" width="150px" height="200px">
                           <img id="addprev2" width="150px" height="200px">
                           <img id="addprev3" width="150px" height="200px">
                         </div>
-                      </div> <!-- end col -->
-                    </div>
+                      </div> -->
+                    <!-- end col -->
+
+
+                    <!-- </div> -->
+                    <!-- end row -->
+
                   </div>
                 </div>
               </div>
             </div>
 
+
+
+            <div class="col-lg-4">
+              <div class="mb-3">
+                <label class="form-label" for="proname">Product Name</label>
+                <input type="text" class="form-control" style="border:.5px solid #9b9999;" id="proname"
+                  placeholder="Enter Product Name">
+              </div>
+            </div> <!-- end col -->
+
+            <div class="col-lg-4">
+              <div class="mb-3">
+                <label class="form-label" for="proprice">Product Price</label>
+                <input type="number" class="form-control" style="border:.5px solid #9b9999;" id="proprice"
+                  placeholder='Enter Product Price'>
+              </div>
+            </div> <!-- end col -->
+
+            <div class="col-lg-4">
+              <div class="mb-3">
+                <label class="form-label" for="prosize">Product Size</label>
+                <input type="text" class="form-control" style="border:.5px solid #9b9999;" id="prosize"
+                  placeholder='Enter Product Size'>
+              </div>
+            </div> <!-- end col -->
 
             <div class="row">
-              <div class="col-sm-12">
-                <div class="card">
-                  <div class="card-body">
-                    <div class="row">
-
-                      <div class="col-lg-4">
-                        <div class="mb-3">
-                          <label class="form-label" for="proname">Product Name</label>
-                          <input type="text" class="form-control" style="border:.5px solid #9b9999;" id="proname"
-                            placeholder="Enter Product Name">
-                        </div>
-                      </div> <!-- end col -->
-
-                      <div class="col-lg-4">
-                        <div class="mb-3">
-                          <label class="form-label" for="proprice">Product Price</label>
-                          <input type="number" class="form-control" style="border:.5px solid #9b9999;" id="proprice"
-                            placeholder='Enter Product Price'>
-                        </div>
-                      </div> <!-- end col -->
-
-                      <div class="col-lg-4">
-                        <div class="mb-3">
-                          <label class="form-label" for="prosize">Product Size</label>
-                          <input type="text" class="form-control" style="border:.5px solid #9b9999;" id="prosize"
-                            placeholder='Enter Product Size'>
-                        </div>
-                      </div> <!-- end col -->
-
-                      <div class="row">
-                        <div class="col-lg-4">
-                          <div class="mb-3">
-                            <label class="form-label" for="procolor">Product Color</label>
-                            <input type="text" class="form-control" style="border:.5px solid #9b9999;" id="procolor"
-                              placeholder="Enter Product Color">
-                          </div>
-                        </div>
-
-                        <div class="col-lg-8">
-                          <div class="mb-3">
-                            <label class="form-label" for="prodes">Product Description</label>
-                            <textarea style="border:.5px solid #9b9999;" class="form-control" id="prodes" rows="4"
-                              placeholder="Product Description"></textarea>
-                          </div>
-                        </div>
-                      </div>
-
-
-                      <div class="card-footer text-end">
-                        <button class="btn text-white" style='display:none;' id="submit" type="submit">Submit</button>
-
-                      </div>
-                    </div><!-- end row -->
-                  </div>
+              <div class="col-lg-4">
+                <div class="mb-3">
+                  <label class="form-label" for="procolor">Product Color</label>
+                  <input type="text" class="form-control" style="border:.5px solid #9b9999;" id="procolor"
+                    placeholder="Enter Product Color">
                 </div>
-                <!-- Container-fluid Ends-->
               </div>
-              <!-- footer start-->
-              <footer class="footer">
-                <div class="container-fluid">
-                  <div class="row">
-                    <div class="col-md-6 p-0 footer-left">
-                      <p class="mb-0">Copyright © . All rights reserved Designed By <a
-                          href="https://cryptographicsolutions.in/">Cryptographic Solutions</a>.</p>
-                    </div>
-                    <!-- <div class="col-md-6 p-0 footer-right">
+
+              <div class="col-lg-8">
+                <div class="mb-3">
+                  <label class="form-label" for="prodes">Product Description</label>
+                  <textarea style="border:.5px solid #9b9999;" class="form-control" id="prodes" rows="4"
+                    placeholder="Product Description"></textarea>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="card-footer text-end">
+              <button class="btn text-white" style='display:none;' id="submit" type="submit">Submit</button>
+
+            </div>
+          </div><!-- end row -->
+        </div>
+      </div>
+      <!-- Container-fluid Ends-->
+
+    </div>
+
+    <!-- footer start-->
+    <footer class="footer">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-6 p-0 footer-left">
+            <p class="mb-0">Copyright © . All rights reserved Designed By <a
+                href="https://cryptographicsolutions.in/">Cryptographic Solutions</a>.</p>
+          </div>
+          <!-- <div class="col-md-6 p-0 footer-right">
                <a href="https://cryptographicsolutions.in/"></a>
             </div> -->
-                  </div>
-                </div>
-              </footer>
-            </div>
-          </div>
-          <!-- latest jquery-->
-          <script src="../assets/js/jquery-3.6.0.min.js"></script>
-          <!-- Bootstrap js-->
-          <script src="../assets/js/bootstrap/bootstrap.bundle.min.js"></script>
-          <!-- feather icon js-->
-          <script src="../assets/js/icons/feather-icon/feather.min.js"></script>
-          <script src="../assets/js/icons/feather-icon/feather-icon.js"></script>
-          <!-- scrollbar js-->
-          <script src="../assets/js/scrollbar/simplebar.js"></script>
-          <script src="../assets/js/scrollbar/custom.js"></script>
-          <!-- Sidebar jquery-->
-          <script src="../assets/js/config.js"></script>
-          <script src="../assets/js/sidebar-menu.js"></script>
-          <script src="../assets/js/tooltip-init.js"></script>
-          <!-- Template js-->
-          <script src="../assets/js/script.js"></script>
-          <script src="../assets/js/theme-customizer/customizer.js"> </script>
-          <!-- login js-->
+        </div>
+      </div>
+    </footer>
+  </div>
+  </div>
+  <!-- latest jquery-->
+  <script src="../assets/js/jquery-3.6.0.min.js"></script>
+  <!-- Bootstrap js-->
+  <script src="../assets/js/bootstrap/bootstrap.bundle.min.js"></script>
+  <!-- feather icon js-->
+  <script src="../assets/js/icons/feather-icon/feather.min.js"></script>
+  <script src="../assets/js/icons/feather-icon/feather-icon.js"></script>
+  <!-- scrollbar js-->
+  <script src="../assets/js/scrollbar/simplebar.js"></script>
+  <script src="../assets/js/scrollbar/custom.js"></script>
+  <!-- Sidebar jquery-->
+  <script src="../assets/js/config.js"></script>
+  <script src="../assets/js/sidebar-menu.js"></script>
+  <script src="../assets/js/tooltip-init.js"></script>
+  <!-- Template js-->
+  <script src="../assets/js/script.js"></script>
+  <script src="../assets/js/theme-customizer/customizer.js"> </script>
+  <!-- login js-->
 
-          <!--Toastr  -->
-          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
-            integrity="sha512-vKMx8UnXk60zUwyUnUPM3HbQo8QfmNx7+ltw8Pm5zLusl1XIfwcxo8DbWCqMGKaWeNxWA8yrx5v3SaVpMvR3CA=="
-            crossorigin="anonymous" referrerpolicy="no-referrer" />
-          <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
-            integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
-            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <!--Toastr  -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
+    integrity="sha512-vKMx8UnXk60zUwyUnUPM3HbQo8QfmNx7+ltw8Pm5zLusl1XIfwcxo8DbWCqMGKaWeNxWA8yrx5v3SaVpMvR3CA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
+    integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-          <script>
-            function validateImage() {
-              const fileInput = document.getElementById('addprev1');
-              const fileInput2 = document.getElementById('addprev2');
-              const fileInput3 = document.getElementById('addprev3');
-              const errorText = document.getElementById('errorText');
-              const errorText2 = document.getElementById('errorText2');
-              const errorText3 = document.getElementById('errorText3');
-              const allowedFormats = ['image/jpeg', 'image/jpg', 'image/png'];
+  <script>
+document.getElementById('addImage').addEventListener('click', function () {
+  const table = document.getElementById('imageTable').getElementsByTagName('tbody')[0];
+  const rowTemplate = document.getElementById('rowTemplate');
+  const newRow = rowTemplate.cloneNode(true); // Clone the template row
+  newRow.style.display = ''; // Make the cloned row visible
 
-              if (fileInput.files.length > 0) {
-                const file = fileInput.files[0];
-                const file2 = fileInput2.files[0];
-                const file3 = fileInput3.files[0];
-                if (allowedFormats.includes(file.type)) {
-                  // The file format is allowed, you can proceed with the upload.
-                  errorText.textContent = '';
-                  // Here you can write your code to upload the image.
-                }
+  // Reset the file input and image preview for the new row
+  const fileInput = newRow.querySelector('input[type="file"]');
+  const imagePreview = newRow.querySelector('img');
+  const fileSizeMessage = newRow.querySelector('.fsize');
+  const deleteContainer = newRow.querySelector('.delete-container'); // Container for the delete button
+  const submit_btn = document.getElementById('submit');
 
-                if (allowedFormats.includes(file2.type)) {
-                  // The file format is allowed, you can proceed with the upload.
-                  errorText2.textContent = '';
-                  // Here you can write your code to upload the image.
-                }
+  fileInput.value = '';
+  imagePreview.src = '';
+  fileSizeMessage.textContent = '';
 
-                if (allowedFormats.includes(file3.type)) {
-                  // The file format is allowed, you can proceed with the upload.
-                  errorText3.textContent = '';
-                  // Here you can write your code to upload the image.
-                } else {
-                  // The file format is not allowed.
-                  errorText.textContent = 'Invalid file format. Please select a JPEG or PNG image.';
-                  errorText2.textContent = 'Invalid file format. Please select a JPEG or PNG image.';
-                  errorText3.textContent = 'Invalid file format. Please select a JPEG or PNG image.';
-                  fileInput.value = ''; // Clear the file input
-                  fileInput2.value = ''; // Clear the file input
-                  fileInput3.value = ''; // Clear the file input
-                }
-              }
-            }
+  // Add a delete button to the new row (in the delete-container div)
+  const deleteButton = document.createElement('button');
+  deleteButton.innerHTML = '<i class="bi bi-trash-fill h6 mt-2"></i>'; // Use the Font Awesome trash icon
+  deleteButton.className = 'btn btn-danger';
+  deleteButton.addEventListener('click', function () {
+    table.removeChild(newRow);
+  });
 
+  deleteContainer.appendChild(deleteButton); // Append the delete button to the container
 
-            function previewImage() {
-              const input = document.getElementById('mainimg');
-              const preview = document.getElementById('mainprev');
-              const fileSizeMessage = document.getElementById('fsize');
-              const submit_btn = document.getElementById('submit');
+  // Remove any additional default rows created by the JavaScript
+  const defaultRows = table.getElementsByClassName('default-row');
+  if (defaultRows.length > 1) {
+    table.removeChild(defaultRows[defaultRows.length - 1]);
+  }
 
-              if (input.files && input.files[0]) {
-                const reader = new FileReader();
-                reader.onload = function (e) {
-                  preview.src = e.target.result;
-                };
-                reader.readAsDataURL(input.files[0]);
+  table.appendChild(newRow);
+});
 
+function previewImage(input) {
+  const preview = input.parentElement.nextElementSibling.querySelector('img');
+  const fileSizeMessage = input.parentElement.querySelector('.fsize');
+  const submit_btn = document.getElementById('submit');
 
-              }
+  if (input.files && input.files[0]) {
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      preview.src = e.target.result;
+    };
+    reader.readAsDataURL(input.files[0]);
 
-              const selectedFile = input.files[0]; // Get the selected file
-              const maxSizeInBytes = 1024 * 100; // 1 MB (adjust as needed)
+    const selectedFile = input.files[0];
+    const maxSizeInBytes = 1024 * 100;
 
-              if (selectedFile && selectedFile.size > maxSizeInBytes) {
-                fileSizeMessage.textContent = 'File size exceeds the allowed limit .';
-                submit_btn.style.display = 'none';
+    if (selectedFile && selectedFile.size > maxSizeInBytes) {
+      fileSizeMessage.textContent = 'File size exceeds the allowed limit.';
+      submit_btn.style.display = 'none';
+    } else {
+      fileSizeMessage.textContent = 'Successfully Uploaded';
+      submit_btn.style.display = 'inline-block';
+    }
+  } else {
+    fileSizeMessage.textContent = '';
+    submit_btn.style.display = 'inline-block';
+  }
+}
 
+    $(document).ready(function () {
+
+      $("#submit").click(function () {
+        var proname = $("#proname").val().trim();
+        console.log(proname);
+        var proprice = $("#proprice").val().trim();
+        console.log(proprice);
+        var prosize = $("#prosize").val().trim();
+        console.log(prosize);
+        var procolor = $("#procolor").val().trim();
+        console.log(procolor);
+        var prodes = $("#prodes").val().trim();
+        console.log(prodes);
+
+         if (proname == "") {
+          toastr.error("Enter Product Name", "Empty !");
+        } else if (proprice == "") {
+          toastr.error("Enter Price", "Empty !")
+        } else if (prosize == "") {
+          toastr.error("Enter Size", "Empty !")
+        } else if (procolor == "") {
+          toastr.error("Enter Color", "Empty !")
+        } else if (prodes == "") {
+          toastr.error("Enter Description", "Empty !")
+        } else {
+          var fd = new FormData();
+          fd.append("product_name", proname);
+          fd.append("product_price", proprice);
+          fd.append("product_color", procolor);
+          fd.append("product_size", prosize);
+          fd.append("product_description", prodes);
+
+          $.ajax({
+            url: 'ajax',
+            type: 'post',
+            contentType: false,
+            processData: false,
+            data: fd,
+
+            success: function (response) {
+              var result = JSON.parse(response);
+              if (result.status == "Success") {
+                toastr.success("Product Created Successfully", "Welcome !")
+
+                $("#mainimg").files("");
+                $("#addimg1").files("");
+                $("#addimg2").files("");
+                $("#addimg3").files("");
+                $("#proname").val("");
+                $("#proprice").val("");
+                $("#procolor").val("");
+                $("#prosize").val("");
+                $("#prodes").val("");
               } else {
-                fileSizeMessage.textContent = 'Successfully Uploaded'; // Clear any previous error message
-                submit_btn.style.display = 'inline-block';
+                toastr.error("Unable To Create Product", "Error")
               }
             }
+          })
+        }
 
-
-            function previewaddImage(inputNum) {
-              const input = document.getElementById('addimg' + inputNum);
-              const preview = document.getElementById('addprev' + inputNum);
-              const fileSizeMessage = document.getElementById('fsize' + inputNum);
-              const submitBtn = document.getElementById('submit_btn'); // Get the submit button
-
-              const maxSizeInBytes = 1024 * 100; // 1 MB (adjust as needed)
-              const allowedFileFormats = ['jpg', 'jpeg', 'png']; // Add allowed file formats
-
-              if (input.files && input.files[0]) {
-                const reader = new FileReader();
-                reader.onload = function (e) {
-                  preview.src = e.target.result;
-                };
-                reader.readAsDataURL(input.files[0]);
-
-                const selectedFile = input.files[0]; // Get the selected file
-                const fileSize = selectedFile.size;
-                const fileName = selectedFile.name;
-                const fileExtension = fileName.split('.').pop().toLowerCase();
-
-                if (fileSize > maxSizeInBytes) {
-                  fileSizeMessage.textContent = 'File size exceeds the allowed limit.';
-                  submitBtn.style.display = 'none';
-                } else if (!allowedFileFormats.includes(fileExtension)) {
-                  fileSizeMessage.textContent = 'Invalid file format.';
-                  submitBtn.style.display = 'none';
-                } else {
-                  fileSizeMessage.textContent = 'Successfully Uploaded'; // Clear any previous error message
-                  submitBtn.style.display = 'inline-block';
-                }
-              }
-            }
-
-
-
-            $(document).ready(function () {
-
-              $("#submit").click(function () {
-                var main = $("#mainimg")[0].files[0];
-                console.log(main);
-
-                var add1 = $("#addimg1")[0].files[0];
-                console.log(add1);
-                var add2 = $("#addimg2")[0].files[0];
-                console.log(add2);
-                var add3 = $("#addimg3")[0].files[0];
-                console.log(add3);
-                var proname = $("#proname").val().trim();
-                console.log(proname);
-                var proprice = $("#proprice").val().trim();
-                console.log(proprice);
-                var prosize = $("#prosize").val().trim();
-                console.log(prosize);
-                var procolor = $("#procolor").val().trim();
-                console.log(procolor);
-                var prodes = $("#prodes").val().trim();
-                console.log(prodes);
-
-                if (main == "") 
-                {
-                  toastr.error("Select main Image", "Empty !");
-                } 
-
-                else if(add1 == "")
-                {
-                  toastr.error("Select Additional Image", "Empty !")
-                }
-                else if (proname == "") 
-                {
-                  toastr.error("Enter Product Name","Empty !");
-                }
-
-                else if (proprice == "")
-                {
-                  toastr.error("Enter Price","Empty !")
-                }
-
-                else if (prosize == "")
-                {
-                  toastr.error("Enter Size","Empty !")
-                }
-
-                else if (procolor == "")
-                {
-                  toastr.error("Enter Color","Empty !")
-                }
-
-                else if (prodes == "")
-                {
-                  toastr.error("Enter Description","Empty !")
-                }
-
-                else{
-                  var fd = new FormData();
-                   fd.append("main_img",main);
-                   fd.append("add1_img",add1);
-                   fd.append("add2_img",add2);
-                   fd.append("add3_img",add3);
-                   fd.append("product_name",proname);
-                   fd.append("product_price",proprice);
-                   fd.append("product_color",procolor);
-                   fd.append("product_size",prosize);
-                   fd.append("product_description",prodes);
-
-                   $.ajax({
-                    url:'ajax',
-                    type:'post',
-                    contentType:false,
-                    processData:false,
-                    data:fd,
-
-                    success:function(response){
-                      var result = JSON.parse(response);
-                      if(result.status == "Success"){
-                        toastr.success("Product Created Successfully","Welcome !")
-
-                        $("#mainimg").files("");
-                        $("#addimg1").files("");
-                        $("#addimg2").files("");
-                        $("#addimg3").files("");
-                        $("#proname").val("");
-                        $("#proprice").val("");
-                        $("#procolor").val("");
-                        $("#prosize").val("");
-                        $("#prodes").val("");
-                      }
-                      else{
-                        toastr.error("Unable To Create Product","Error")
-                      }
-                    }
-                   })
-                }
-
-              })
+      })
 
 
 
 
 
-            });
-          </script>
+    });
+  </script>
 
 </body>
 
