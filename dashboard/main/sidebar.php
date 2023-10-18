@@ -11,7 +11,7 @@
 
 <div class="sidebar-wrapper">
           <div>
-            <div class="logo-wrapper"><a href="index.html"><img class="img-fluid for-light" src="../assets/images/logo/logo.png" alt=""></a>
+            <div class="logo-wrapper"><a href="index.html"><img class="img-fluid for-light" src="<?php echo $path ?>" alt=""></a>
               <div class="back-btn"><i data-feather="grid"></i></div>
               <div class="toggle-sidebar icon-box-sidebar"><i class="status_toggle middle sidebar-toggle" data-feather="grid"> </i></div>
             </div>
