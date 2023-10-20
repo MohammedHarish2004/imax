@@ -46,6 +46,7 @@
     input::-webkit-inner-spin-button {
       -webkit-appearance: none;
       margin: 0;
+
     }
 
     #submit {
@@ -56,6 +57,10 @@
     #submit:hover {
       background-color: #bd001fd0;
       border: 0px !important;
+    }
+
+    .tooltip-inner {
+      color: red !important;
     }
   </style>
 
@@ -85,187 +90,164 @@
       <?php include "sidebar.php" ;?>
       <!-- Page Sidebar Ends-->
 
-      <div class="page-body">
-        <div class="container-fluid">
-          <div class="page-title">
-            <div class="row">
-              <div class="col-sm-6">
-                <h3>Product Creations </h3>
-              </div>
-              <!-- <div class="col-sm-6">
-                  <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.html"><i data-feather="home"></i></a></li>
-                    <li class="breadcrumb-item">Form Controls</li>
-                    <li class="breadcrumb-item active">Base inputs</li>
-                  </ol>
-                </div> -->
-            </div>
-          </div>
-        </div>
-        <!-- Container-fluid starts-->
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-sm-12">
-              <div class="card">
-                <div class="form theme-form">
-                  <!-- <div class="row"> -->
+
+
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="page-body">
+              <div class="container-fluid">
+                <div class="page-title">
                   <div class="row">
+                    <div class="col-sm-6">
+                      <h3>Product Creations</h3>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Container-fluid starts -->
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-lg-12">
                     <div class="card">
                       <div class="card-body">
-                      <div class="table-responsive theme-scrollbar">
-  <table class="table" id="imageTable">
-    <thead>
-      <tr class="border-bottom-success">
-        <th scope="col">Image File</th>
-        <th scope="col">Image Preview</th>
-        <th scope="col">Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr class="border-bottom-success" id="rowTemplate">
-        <td>
-          <input class="form-control mt-4 w-75 mainimg" style="border:.5px solid #9b9999;"
-            onchange="previewImage(this)" type="file" accept=".jpg, .jpeg, .png">
-          <p class="mt-3 fsize"></p>
-        </td>
-        <td><img class="mainprev" width="100%" height="100px"></td>
-        <td>
-          <!-- Empty container div for the delete button -->
-          <div class="delete-container mt-4"></div>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-  <button class="btn btn-success mt-2 float-end" id="addImage">Add Image</button>
-</div>
+                        <div class="table-responsive theme-scrollbar">
+                          <table class="table" id="imageTable">
+                            <thead>
+                              <tr class="border-bottom-info">
+
+                                <th scope="col">Image File<button class="btn text-danger" type="button"
+                                    data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Choose image less
+                                  than 2mb"><i class="bi bi-info-circle-fill"></i></button>
+
+
+                                </th>
+                                <th scope="col">Image Preview</th>
+                                <th scope="col">Actions</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <!-- Template row for adding images -->
+                              <tr class="border-bottom-info" id="rowTemplate">
+                                <td>
+                                  <!-- Replace your button with this code -->
+                                  <div class="row">
+                                    <div class="col-12">
+                                      <label class="btn mt-4 btn-success btn-sm btn-block mainimg">
+                                        <input type="file" accept=".jpg, .jpeg, .png" style="display: none;"
+                                          onchange="previewImage(this)">
+                                        Upload Image
+                                      </label>
+                                    </div>
+                                  </div>
+
+                                  <!-- Hidden file input -->
+                                  <p class="pt-3 fsize"></p>
+                                </td>
+
+
+                                <td>
+                                  <!-- Image preview initially hidden -->
+                                  <img class="mainprev" width="100%" height="100px" style="display: none;">
+                                  <br>
+                                  <label for="" class="mb-2 me-1">Main</label>
+                                  <input type="radio" class="main-image-radio" name="mainImage"
+                                    onchange="setMainImage(this)">
+                                </td>
 
 
 
 
+                                <td>
+                                  <!-- Container for the delete button -->
+                                  <div class="delete-container mt-4"></div>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                          <!-- Button to add new images -->
+                          <button class="btn btn-info mt-2 float-end" id="addImage">Add Image</button>
+                        </div>
 
 
                       </div>
                     </div>
+                  </div>
+                </div>
 
-                    <!-- <div class="col-lg-6">
-                        <div class="mb-3">
-                          <label class="form-label" for="mainimg">Main Image</label>
-                          <input class="form-control" style="border:.5px solid #9b9999;" id="mainimg"
-                            onchange="previewImage()" type="file" accept=".jpg, .jpeg, .png">
-                          <p id="errorText" style="color: red;"></p>
-                          <p id="fsize" class="mt-3"></p>
+                <div class="row">
+                  <div class="col-lg-12">
+                    <div class="card">
+                      <div class="card-body">
+                        <div class="row">
+                          <div class="col-lg-4">
+                            <div class="mb-3">
+                              <label class="form-label" for="proname">Product Name</label>
+                              <input type="text" class="form-control" style="border:.5px solid #9b9999;" id="proname"
+                                placeholder="Enter Product Name">
+                            </div>
+                          </div>
+                          <div class="col-lg-4">
+                            <div class="mb-3">
+                              <label class="form-label" for="proprice">Product Price</label>
+                              <input type="number" class="form-control" style="border:.5px solid #9b9999;" id="proprice"
+                                placeholder='Enter Product Price'>
+                            </div>
+                          </div>
+                          <div class="col-lg-4">
+                            <div class="mb-3">
+                              <label class="form-label" for="prosize">Product Size</label>
+                              <input type="text" class="form-control" style="border:.5px solid #9b9999;" id="prosize"
+                                placeholder='Enter Product Size'>
+                            </div>
+                          </div>
                         </div>
-
-                        <div class="mb-3">
-                          <img id="mainprev" width="100%" height="300px">
+                        <div class="row">
+                          <div class="col-lg-4">
+                            <div class="mb-3">
+                              <label class="form-label" for="procolor">Product Color</label>
+                              <input type="text" class="form-control" style="border:.5px solid #9b9999;" id="procolor"
+                                placeholder="Enter Product Color">
+                            </div>
+                          </div>
+                          <div class="col-lg-8">
+                            <div class="mb-3">
+                              <label class="form-label" for="prodes">Product Description</label>
+                              <textarea style="border:.5px solid #9b9999;" class="form-control" id="prodes" rows="4"
+                                placeholder="Product Description"></textarea>
+                            </div>
+                          </div>
                         </div>
-                      </div> end col -->
-
-                    <!-- <div class="col-lg-6">
-                        <div class="mb-3">
-                          <label class="form-label" for="addimg">Additional Images</label>
-                          <input class="form-control" style="border:.5px solid #9b9999;" id="addimg1" type="file"
-                            onchange="previewaddImage(1)" accept=".jpg, .jpeg, .png">
-                          <p id="fsize1" class="mt-3"></p>
-                          <p id="errorText" style="color: red;"></p>
-                          <input class="form-control mt-2" style="border:.5px solid #9b9999;" id="addimg2" type="file"
-                            onchange="previewaddImage(2)" accept=".jpg, .jpeg, .png">
-                          <p id="fsize2" class="mt-3"></p>
-                          <p id="errorText" style="color: red;"></p>
-                          <input class="form-control mt-2" style="border:.5px solid #9b9999;" id="addimg3" type="file"
-                            onchange="previewaddImage(3)" accept=".jpg, .jpeg, .png">
-                          <p id="fsize3" class="mt-3"></p>
-                          <p id="errorText" style="color: red;"></p>
-                        </div> -->
-
-                    <!-- <div class="mb-3">
-                          <img id="addprev1" width="150px" height="200px">
-                          <img id="addprev2" width="150px" height="200px">
-                          <img id="addprev3" width="150px" height="200px">
-                        </div>
-                      </div> -->
-                    <!-- end col -->
-
-
-                    <!-- </div> -->
-                    <!-- end row -->
-
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
 
-
-
-            <div class="col-lg-4">
-              <div class="mb-3">
-                <label class="form-label" for="proname">Product Name</label>
-                <input type="text" class="form-control" style="border:.5px solid #9b9999;" id="proname"
-                  placeholder="Enter Product Name">
-              </div>
-            </div> <!-- end col -->
-
-            <div class="col-lg-4">
-              <div class="mb-3">
-                <label class="form-label" for="proprice">Product Price</label>
-                <input type="number" class="form-control" style="border:.5px solid #9b9999;" id="proprice"
-                  placeholder='Enter Product Price'>
-              </div>
-            </div> <!-- end col -->
-
-            <div class="col-lg-4">
-              <div class="mb-3">
-                <label class="form-label" for="prosize">Product Size</label>
-                <input type="text" class="form-control" style="border:.5px solid #9b9999;" id="prosize"
-                  placeholder='Enter Product Size'>
-              </div>
-            </div> <!-- end col -->
-
-            <div class="row">
-              <div class="col-lg-4">
-                <div class="mb-3">
-                  <label class="form-label" for="procolor">Product Color</label>
-                  <input type="text" class="form-control" style="border:.5px solid #9b9999;" id="procolor"
-                    placeholder="Enter Product Color">
-                </div>
-              </div>
-
-              <div class="col-lg-8">
-                <div class="mb-3">
-                  <label class="form-label" for="prodes">Product Description</label>
-                  <textarea style="border:.5px solid #9b9999;" class="form-control" id="prodes" rows="4"
-                    placeholder="Product Description"></textarea>
-                </div>
+              <div class="card-footer text-end">
+                <button class="btn text-white" style='display:none;' id="submit">Submit</button>
               </div>
             </div>
-
-
-            <div class="card-footer text-end">
-              <button class="btn text-white" style='display:none;' id="submit" type="submit">Submit</button>
-
-            </div>
-          </div><!-- end row -->
+          </div>
         </div>
       </div>
-      <!-- Container-fluid Ends-->
 
-    </div>
-
-    <!-- footer start-->
-    <footer class="footer">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-md-6 p-0 footer-left">
-            <p class="mb-0">Copyright © . All rights reserved Designed By <a
-                href="https://cryptographicsolutions.in/">Cryptographic Solutions</a>.</p>
-          </div>
-          <!-- <div class="col-md-6 p-0 footer-right">
+      <!-- footer start-->
+      <footer class="footer">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-6 p-0 footer-left">
+              <p class="mb-0">Copyright © . All rights reserved Designed By <a
+                  href="https://cryptographicsolutions.in/">Cryptographic Solutions</a>.</p>
+            </div>
+            <!-- <div class="col-md-6 p-0 footer-right">
                <a href="https://cryptographicsolutions.in/"></a>
             </div> -->
+          </div>
         </div>
-      </div>
-    </footer>
-  </div>
+      </footer>
+    </div>
   </div>
   <!-- latest jquery-->
   <script src="../assets/js/jquery-3.6.0.min.js"></script>
@@ -295,69 +277,108 @@
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
   <script>
-document.getElementById('addImage').addEventListener('click', function () {
-  const table = document.getElementById('imageTable').getElementsByTagName('tbody')[0];
-  const rowTemplate = document.getElementById('rowTemplate');
-  const newRow = rowTemplate.cloneNode(true); // Clone the template row
-  newRow.style.display = ''; // Make the cloned row visible
+    function selectImage(button) {
+      // Find the hidden file input associated with the clicked button
+      const fileInput = button.nextElementSibling;
 
-  // Reset the file input and image preview for the new row
-  const fileInput = newRow.querySelector('input[type="file"]');
-  const imagePreview = newRow.querySelector('img');
-  const fileSizeMessage = newRow.querySelector('.fsize');
-  const deleteContainer = newRow.querySelector('.delete-container'); // Container for the delete button
-  const submit_btn = document.getElementById('submit');
-
-  fileInput.value = '';
-  imagePreview.src = '';
-  fileSizeMessage.textContent = '';
-
-  // Add a delete button to the new row (in the delete-container div)
-  const deleteButton = document.createElement('button');
-  deleteButton.innerHTML = '<i class="bi bi-trash-fill h6 mt-2"></i>'; // Use the Font Awesome trash icon
-  deleteButton.className = 'btn btn-danger';
-  deleteButton.addEventListener('click', function () {
-    table.removeChild(newRow);
-  });
-
-  deleteContainer.appendChild(deleteButton); // Append the delete button to the container
-
-  // Remove any additional default rows created by the JavaScript
-  const defaultRows = table.getElementsByClassName('default-row');
-  if (defaultRows.length > 1) {
-    table.removeChild(defaultRows[defaultRows.length - 1]);
-  }
-
-  table.appendChild(newRow);
-});
-
-function previewImage(input) {
-  const preview = input.parentElement.nextElementSibling.querySelector('img');
-  const fileSizeMessage = input.parentElement.querySelector('.fsize');
-  const submit_btn = document.getElementById('submit');
-
-  if (input.files && input.files[0]) {
-    const reader = new FileReader();
-    reader.onload = function (e) {
-      preview.src = e.target.result;
-    };
-    reader.readAsDataURL(input.files[0]);
-
-    const selectedFile = input.files[0];
-    const maxSizeInBytes = 1024 * 100;
-
-    if (selectedFile && selectedFile.size > maxSizeInBytes) {
-      fileSizeMessage.textContent = 'File size exceeds the allowed limit.';
-      submit_btn.style.display = 'none';
-    } else {
-      fileSizeMessage.textContent = 'Successfully Uploaded';
-      submit_btn.style.display = 'inline-block';
+      // Trigger a click event on the file input
+      fileInput.click();
     }
-  } else {
-    fileSizeMessage.textContent = '';
-    submit_btn.style.display = 'inline-block';
-  }
-}
+
+
+    document.getElementById('addImage').addEventListener('click', function () {
+      const table = document.getElementById('imageTable').getElementsByTagName('tbody')[0];
+      const rowTemplate = document.getElementById('rowTemplate');
+      const newRow = rowTemplate.cloneNode(true); // Clone the template row
+      newRow.style.display = ''; // Make the cloned row visible
+
+      // Reset the file input and image preview for the new row
+      const fileInput = newRow.querySelector('input[type="file"]');
+      const imagePreview = newRow.querySelector('img');
+      const fileSizeMessage = newRow.querySelector('.fsize');
+      const deleteContainer = newRow.querySelector('.delete-container');
+      const radio = newRow.querySelector('.main-image-radio'); // Get the radio button for the new row
+      const submit_btn = document.getElementById('submit');
+
+      fileInput.value = '';
+      imagePreview.src = '';
+      imagePreview.style.display = 'none';
+      fileSizeMessage.textContent = '';
+
+      // Add a delete button to the new row
+      const deleteButton = document.createElement('button');
+      deleteButton.innerHTML = '<i class="bi bi-trash-fill h6 mt-2"></i>';
+      deleteButton.className = 'btn btn-danger';
+      deleteButton.addEventListener('click', function () {
+        table.removeChild(newRow);
+      });
+
+      deleteContainer.appendChild(deleteButton);
+
+      // Remove any additional default rows created by the JavaScript
+      const defaultRows = table.getElementsByClassName('default-row');
+      if (defaultRows.length > 1) {
+        table.removeChild(defaultRows[defaultRows.length - 1]);
+      }
+
+      table.appendChild(newRow);
+
+      // Uncheck the radio button in the new row to avoid automatic selection
+      radio.checked = false;
+    });
+
+    function setMainImage(radio) {
+      const row = radio.closest('tr');
+      const imagePreview = row.querySelector('img.mainprev');
+
+      if (radio.checked) {
+        // Remove any existing borders in the same table
+        const table = row.closest('table');
+        table.querySelectorAll('img.mainprev').forEach((prev) => (prev.style.border = 'none'));
+
+        // Add a border to the selected image to indicate it's the main image
+        imagePreview.style.border = '2px solid green';
+      }
+    }
+
+
+
+    function previewImage(input) {
+      const preview = input.closest('tr').querySelector('img.mainprev');
+      const fileSizeMessage = input.closest('td').querySelector('.fsize');
+      const submit_btn = document.getElementById('submit'); // Get the submit button
+
+      if (input.files && input.files[0]) {
+        const selectedFile = input.files[0];
+        const maxSizeInBytes = 1024 * 200; // 2MB
+
+        if (selectedFile.size > maxSizeInBytes) {
+          fileSizeMessage.textContent = 'File size exceeds the allowed limit.';
+          fileSizeMessage.style.color = 'red';
+          preview.style.display = 'none'; // Hide the image preview
+
+        } else {
+          fileSizeMessage.textContent = 'File Size is within the limit';
+          fileSizeMessage.style.color = 'green';
+          submit_btn.style.display = 'inline-block'; // Show the submit butto
+
+          const reader = new FileReader();
+          reader.onload = function (e) {
+            preview.src = e.target.result;
+            preview.style.display = 'block'; // Show the image preview
+          };
+          reader.readAsDataURL(input.files[0]);
+        }
+      } else {
+        fileSizeMessage.textContent = '';
+        preview.style.display = 'none'; // Hide the image preview
+        submit_btn.style.display = 'none'; // Hide the submit button
+      }
+    }
+
+
+
+
 
     $(document).ready(function () {
 
@@ -373,7 +394,7 @@ function previewImage(input) {
         var prodes = $("#prodes").val().trim();
         console.log(prodes);
 
-         if (proname == "") {
+        if (proname == "") {
           toastr.error("Enter Product Name", "Empty !");
         } else if (proprice == "") {
           toastr.error("Enter Price", "Empty !")
@@ -403,10 +424,7 @@ function previewImage(input) {
               if (result.status == "Success") {
                 toastr.success("Product Created Successfully", "Welcome !")
 
-                $("#mainimg").files("");
-                $("#addimg1").files("");
-                $("#addimg2").files("");
-                $("#addimg3").files("");
+              
                 $("#proname").val("");
                 $("#proprice").val("");
                 $("#procolor").val("");
