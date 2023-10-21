@@ -49,6 +49,12 @@
 
     }
 
+    .danger {
+
+      background-color: #fe030c;
+      border: 0px !important;
+    }
+
     #submit {
       background-color: #fe030c;
       border: 0px !important;
@@ -113,34 +119,28 @@
                     <div class="card">
                       <div class="card-body">
                         <div class="table-responsive theme-scrollbar">
-                          <table class="table" id="imageTable">
+                          <table class="table" id="mainImageTable">
                             <thead>
                               <tr class="border-bottom-info">
 
-                                <th scope="col">Image File<button class="btn text-danger" type="button"
+                                <th scope="col">Main Image File<button class="btn text-danger" type="button"
                                     data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Choose image less
                                   than 2mb"><i class="bi bi-info-circle-fill"></i></button>
 
 
                                 </th>
-                                <th scope="col">Image Preview</th>
-                                <th scope="col">Actions</th>
+                                <th scope="col">Main Image Preview</th>
                               </tr>
                             </thead>
                             <tbody>
                               <!-- Template row for adding images -->
-                              <tr class="border-bottom-info" id="rowTemplate">
+                              <tr class="border-bottom-info" id="mainRowTemplate">
                                 <td>
                                   <!-- Replace your button with this code -->
-                                  <div class="row">
-                                    <div class="col-12">
-                                      <label class="btn mt-4 btn-success btn-sm btn-block mainimg">
-                                        <input type="file" accept=".jpg, .jpeg, .png" style="display: none;"
-                                          onchange="previewImage(this)">
-                                        Upload Image
-                                      </label>
-                                    </div>
-                                  </div>
+
+                                  <input type="file" class="mt-4" id="mainImg" accept=".jpg, .jpeg, .png"
+                                    onchange="previewImage(this)">
+
 
                                   <!-- Hidden file input -->
                                   <p class="pt-3 fsize"></p>
@@ -151,13 +151,48 @@
                                   <!-- Image preview initially hidden -->
                                   <img class="mainprev" width="100%" height="100px" style="display: none;">
                                   <br>
-                                  <label for="" class="mb-2 me-1">Main</label>
-                                  <input type="radio" class="main-image-radio" name="mainImage"
-                                    onchange="setMainImage(this)">
+                                </td>
+                            </tbody>
+                          </table>
+                        </div>
+
+                        <br><br><br><br><br>
+
+                        <div class="mtable-responsive theme-scrollbar">
+                          <table class="table" id="imageTable">
+                            <thead>
+                              <tr class="border-bottom-info">
+
+                                <th scope="col">Addditional Image File<button class="btn text-danger" type="button"
+                                    data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Choose image less
+                                  than 2mb"><i class="bi bi-info-circle-fill"></i></button>
+
+
+                                </th>
+                                <th scope="col">Additional Image Preview</th>
+                                <th scope="col">Actions</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <!-- Template row for adding images -->
+                              <tr class="border-bottom-info" id="rowTemplate">
+                                <td>
+                                  <!-- Replace your button with this code -->
+
+                                  <input type="file" class="mt-4" id="additionalImageInput" accept=".jpg, .jpeg, .png"
+                                    onchange="previewImage(this)" data-main="0">
+
+
+                                  <!-- Hidden file input -->
+                                  <p class="pt-3 fsize"></p>
                                 </td>
 
 
-
+                                <td>
+                                  <!-- Image preview initially hidden -->
+                                  <img class="mainprev" width="100%" height="100px" style="display: none;">
+                                  <br>
+                                </td>
 
                                 <td>
                                   <!-- Container for the delete button -->
@@ -183,39 +218,43 @@
                         <div class="row">
                           <div class="col-lg-4">
                             <div class="mb-3">
-                              <label class="form-label" for="proname">Product Name</label>
-                              <input type="text" class="form-control" style="border:.5px solid #9b9999;" id="proname"
+                              <label class="form-label" for="proName">Product Name</label>
+                              <input type="text" class="form-control" id="proName" style="border:.5px solid #9b9999;"
                                 placeholder="Enter Product Name">
                             </div>
                           </div>
                           <div class="col-lg-4">
                             <div class="mb-3">
-                              <label class="form-label" for="proprice">Product Price</label>
-                              <input type="number" class="form-control" style="border:.5px solid #9b9999;" id="proprice"
+                              <label class="form-label" for="proPrice">Product Price</label>
+                              <input type="number" class="form-control" id="proPrice" style="border:.5px solid #9b9999;"
                                 placeholder='Enter Product Price'>
                             </div>
                           </div>
                           <div class="col-lg-4">
                             <div class="mb-3">
-                              <label class="form-label" for="prosize">Product Size</label>
-                              <input type="text" class="form-control" style="border:.5px solid #9b9999;" id="prosize"
-                                placeholder='Enter Product Size'>
+                              <label class="form-label" for="proSize">Product Size</label>
+                              <select class="form-select" id="proSize" style="border:.5px solid #9b9999;">
+                                <option value="">--SELECT PRODUCT SIZE--</option>
+                              </select>
+
                             </div>
                           </div>
                         </div>
                         <div class="row">
                           <div class="col-lg-4">
                             <div class="mb-3">
-                              <label class="form-label" for="procolor">Product Color</label>
-                              <input type="text" class="form-control" style="border:.5px solid #9b9999;" id="procolor"
-                                placeholder="Enter Product Color">
+                              <label class="form-label" for="proColor">Product Color</label>
+                              <select class="form-select" id="proColor" style="border:.5px solid #9b9999;">
+                                <option value="">--SELECT PRODUCT SIZE--</option>
+                              </select>
+
                             </div>
                           </div>
                           <div class="col-lg-8">
                             <div class="mb-3">
-                              <label class="form-label" for="prodes">Product Description</label>
-                              <textarea style="border:.5px solid #9b9999;" class="form-control" id="prodes" rows="4"
-                                placeholder="Product Description"></textarea>
+                              <label class="form-label" for="proDescription">Product Description</label>
+                              <textarea style="border:.5px solid #9b9999;" id="proDescription" class="form-control"
+                                rows="4" placeholder="Product Description"></textarea>
                             </div>
                           </div>
                         </div>
@@ -277,13 +316,13 @@
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
   <script>
-    function selectImage(button) {
-      // Find the hidden file input associated with the clicked button
-      const fileInput = button.nextElementSibling;
+    // function selectImage(button) {
+    //   // Find the hidden file input associated with the clicked button
+    //   const fileInput = button.nextElementSibling;
 
-      // Trigger a click event on the file input
-      fileInput.click();
-    }
+    //   // Trigger a click event on the file input
+    //   fileInput.click();
+    // }
 
 
     document.getElementById('addImage').addEventListener('click', function () {
@@ -297,7 +336,6 @@
       const imagePreview = newRow.querySelector('img');
       const fileSizeMessage = newRow.querySelector('.fsize');
       const deleteContainer = newRow.querySelector('.delete-container');
-      const radio = newRow.querySelector('.main-image-radio'); // Get the radio button for the new row
       const submit_btn = document.getElementById('submit');
 
       fileInput.value = '';
@@ -308,7 +346,7 @@
       // Add a delete button to the new row
       const deleteButton = document.createElement('button');
       deleteButton.innerHTML = '<i class="bi bi-trash-fill h6 mt-2"></i>';
-      deleteButton.className = 'btn btn-danger';
+      deleteButton.className = 'btn danger text-white';
       deleteButton.addEventListener('click', function () {
         table.removeChild(newRow);
       });
@@ -323,23 +361,7 @@
 
       table.appendChild(newRow);
 
-      // Uncheck the radio button in the new row to avoid automatic selection
-      radio.checked = false;
     });
-
-    function setMainImage(radio) {
-      const row = radio.closest('tr');
-      const imagePreview = row.querySelector('img.mainprev');
-
-      if (radio.checked) {
-        // Remove any existing borders in the same table
-        const table = row.closest('table');
-        table.querySelectorAll('img.mainprev').forEach((prev) => (prev.style.border = 'none'));
-
-        // Add a border to the selected image to indicate it's the main image
-        imagePreview.style.border = '2px solid green';
-      }
-    }
 
 
 
@@ -377,71 +399,151 @@
     }
 
 
-
-
-
     $(document).ready(function () {
+      // Initialize a FormData object to store the data
+      var formData = new FormData();
 
-      $("#submit").click(function () {
-        var proname = $("#proname").val().trim();
-        console.log(proname);
-        var proprice = $("#proprice").val().trim();
-        console.log(proprice);
-        var prosize = $("#prosize").val().trim();
-        console.log(prosize);
-        var procolor = $("#procolor").val().trim();
-        console.log(procolor);
-        var prodes = $("#prodes").val().trim();
-        console.log(prodes);
+      // Additional image input change event
+      $("input[data-main='0']").change(function () {
+        var fileSizeMessage = $(this).closest('td').find('.fsize');
+        var mainPreview = $(this).closest('td').find('img.mainprev');
+
+        // Assuming previewAdditionalImage is a function that displays the selected image
+        previewAdditionalImage(this, mainPreview, fileSizeMessage);
+
+        // Update the additional image selection
+        var additionalImage = this.files[0];
+
+        // Don't append here; we'll append them all when the form is submitted
+      });
+
+      // Submit button click event
+      $("#submit").click(function (e) {
+        e.preventDefault();
+
+        // Clear the formData object before appending data
+        formData = new FormData();
+
+        // Gather other form data
+        var mainImg = $("#mainImg")[0].files[0];
+        var proname = $("#proName").val().trim();
+        var proprice = $("#proPrice").val().trim();
+        var prosize = $("#proSize").val().trim();
+        var procolor = $("#proColor").val().trim();
+        var prodes = $("#proDescription").val().trim();
 
         if (proname == "") {
-          toastr.error("Enter Product Name", "Empty !");
+          toastr.error("Enter Product Name", "Empty!");
         } else if (proprice == "") {
-          toastr.error("Enter Price", "Empty !")
+          toastr.error("Enter Price", "Empty!");
         } else if (prosize == "") {
-          toastr.error("Enter Size", "Empty !")
+          toastr.error("Enter Size", "Empty!");
         } else if (procolor == "") {
-          toastr.error("Enter Color", "Empty !")
+          toastr.error("Enter Color", "Empty!");
         } else if (prodes == "") {
-          toastr.error("Enter Description", "Empty !")
+          toastr.error("Enter Description", "Empty!");
         } else {
-          var fd = new FormData();
-          fd.append("product_name", proname);
-          fd.append("product_price", proprice);
-          fd.append("product_color", procolor);
-          fd.append("product_size", prosize);
-          fd.append("product_description", prodes);
+          formData.append("product_name", proname);
+          formData.append("product_price", proprice);
+          formData.append("product_color", procolor);
+          formData.append("product_size", prosize);
+          formData.append("product_description", prodes);
+          formData.append("main_Img", mainImg);
 
-          $.ajax({
-            url: 'ajax',
-            type: 'post',
-            contentType: false,
-            processData: false,
-            data: fd,
-
-            success: function (response) {
-              var result = JSON.parse(response);
-              if (result.status == "Success") {
-                toastr.success("Product Created Successfully", "Welcome !")
-
-              
-                $("#proname").val("");
-                $("#proprice").val("");
-                $("#procolor").val("");
-                $("#prosize").val("");
-                $("#prodes").val("");
-              } else {
-                toastr.error("Unable To Create Product", "Error")
-              }
+          // Append all additional images to the formData
+          $("input[data-main='0']").each(function (index, input) {
+            var additionalImage = input.files[0];
+            if (additionalImage) {
+              formData.append("additionalImage" + index, additionalImage);
             }
-          })
+          });
+
+          // Send the formData to the server
+          uploadImage(formData);
         }
+      });
 
-      })
+      // Function to preview and upload the image via AJAX
+      function uploadImage(formData) {
+        $.ajax({
+          url: 'upload.php', // Replace 'upload.php' with your server-side script
+          type: 'post',
+          contentType: false,
+          processData: false,
+          data: formData,
+          success: function (response) {
+            var result = JSON.parse(response);
+            if (result.status == "Success") {
+              toastr.success("Product Created Successfully", "Welcome!");
+
+              $("#proName").val("");
+              $("#proPrice").val("");
+              $("#proColor").val("");
+              $("#proSize").val("");
+              $("#proDescription").val("");
+            } else {
+              toastr.error("Unable To Create Product", "Error");
+            }
+          }
+        });
+      }
+
+      function sizeList() {
+        $.ajax({
+          url: 'ajax',
+          type: 'get',
+
+          success: function (response) {
+            var result = JSON.parse(response);
+
+            if (result.status == 'Success') {
+              var data = result.data;
+
+              console.log(data);
+              var select = $('#proSize');
+
+              data.map(obj => {
+
+                select.append(`
+                                        <option value="${obj.branch_name}">${obj.branch_name}</option>
+                                    `)
+              })
+            }
+          }
+        })
+      }
+      sizeList();
+
+      function colorList() {
+
+        $.ajax({
+          url: 'ajax',
+          type: 'get',
+
+          success: function (response) {
+            var result = JSON.parse(response);
+
+            if (status.data == "Success") {
+
+              var data = result.data;
+
+              var select = $("#proColor");
+
+              data.map(obj => {
+
+                select.append(`<option value=${obj.backend}> ${obj.backend} </option>
+                `)
+              })
+
+            }
+          }
 
 
+        })
 
 
+      }
+      colorList();
 
     });
   </script>
