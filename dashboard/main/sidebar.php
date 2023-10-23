@@ -11,7 +11,7 @@
 
 <div class="sidebar-wrapper">
           <div>
-            <div class="logo-wrapper"><a href="index.html"><img class="img-fluid for-light" src="../assets/images/logo/logo.png" alt=""></a>
+            <div class="logo-wrapper"><a href="index.html"><h1 class="mt-2 text-white">IMAX</h1><img class="img-fluid for-light" src="<?php echo $path ?>" alt=""></a>
               <div class="back-btn"><i data-feather="grid"></i></div>
               <div class="toggle-sidebar icon-box-sidebar"><i class="status_toggle middle sidebar-toggle" data-feather="grid"> </i></div>
             </div>
@@ -28,6 +28,7 @@
                     <h6>Pinned</h6>
                   </li>
                   <hr>
+                  <br>
                   <li class="sidebar-list">
                     <i class="fa fa-thumb-tack"></i>
                   <a class="sidebar-link sidebar-title" href="javascript:void(0)">
@@ -39,7 +40,7 @@
                   </a>
                   </li>
                   <li class="sidebar-list"><i class="fa fa-thumb-tack"></i>
-                  <a class="sidebar-link sidebar-title" href="javascript:void(0)">
+                  <a class="sidebar-link sidebar-title" href="Product_creation.php">
                     <i data-feather="airplay"></i>
                     <span>Product Creation</span>
                     <span class="fa fa-down-arrow"></span>
@@ -47,11 +48,18 @@
                   </li>
 
                   <li class="sidebar-list"><i class="fa fa-thumb-tack"></i>
-                  <a class="sidebar-link sidebar-title" href="javascript:void(0)">
+                  <a class="sidebar-link sidebar-title" href="Product_list.php">
                     <i data-feather="airplay"></i>
                     <span>Products List</span>
                     <span class="fa fa-down-arrow"></span>
                   </a>
+                  </li>
+
+                  <li class="sidebar-list"><i class="fa fa-thumb-tack"></i><a class="sidebar-link sidebar-title active" href="javascript:void(0)" data-bs-original-title="" title=""><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-airplay"><path d="M5 17H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-1"></path><polygon points="12 15 17 21 7 21 12 15"></polygon></svg><span >Master Data</span><div class="according-menu"><i class="fa fa-angle-down"></i></div></a>
+                    <ul class="sidebar-submenu" style="">
+                      <li><a href="Product_size.php" data-bs-original-title="" title="">Product Size Creation</a></li>
+                      <li><a href="Product_color.php" data-bs-original-title="" title="">Product Color Creation</a></li>
+                    </ul>
                   </li>
                   
                 </ul>
