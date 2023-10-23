@@ -235,7 +235,8 @@
                               <label class="form-label" for="proSize">Product Size</label>
                               <select class="form-select" id="proSize" style="border:.5px solid #9b9999;">
                                 <option value="">--SELECT PRODUCT SIZE--</option>
-                                <option value="">ha</option>
+                                <option value="1">Size 1</option>
+
                               </select>
 
                             </div>
@@ -246,8 +247,9 @@
                             <div class="mb-3">
                               <label class="form-label" for="proColor">Product Color</label>
                               <select class="form-select" id="proColor" style="border:.5px solid #9b9999;">
-                                <option value="">--SELECT PRODUCT SIZE--</option>
-                                <option value="">ah</option>
+                                <option value="">--SELECT PRODUCT color--</option>
+                                <option value="1">color 1</option>
+
                               </select>
 
                             </div>
@@ -457,9 +459,12 @@
             var additionalImage = input.files[0];
             if (additionalImage) {
               formData.append("additionalImage" + index, additionalImage);
+              console.log(index, additionalImage);
             }
           });
 
+          console.log(mainImg);
+          
           // Send the formData to the server
           uploadImage(formData);
         }
@@ -468,7 +473,7 @@
       // Function to preview and upload the image via AJAX
       function uploadImage(formData) {
         $.ajax({
-          url: 'upload.php', // Replace 'upload.php' with your server-side script
+          url: 'ajax/product/create_product.php', 
           type: 'post',
           contentType: false,
           processData: false,
@@ -490,62 +495,62 @@
         });
       }
 
-    //   function sizeList() {
-    //     $.ajax({
-    //       url: 'ajax',
-    //       type: 'get',
+      function sizeList() {
+        $.ajax({
+          url: 'ajax',
+          type: 'get',
 
-    //       success: function (response) {
-    //         var result = JSON.parse(response);
+          success: function (response) {
+            var result = JSON.parse(response);
 
-    //         if (result.status == 'Success') {
-    //           var data = result.data;
+            if (result.status == 'Success') {
+              var data = result.data;
 
-    //           console.log(data);
-    //           var select = $('#proSize');
+              console.log(data);
+              var select = $('#proSize');
 
-    //           data.map(obj => {
+              data.map(obj => {
 
-    //             select.append(`
-    //                                     <option value="${obj.branch_name}">${obj.branch_name}</option>
-    //                                 `)
-    //           })
-    //         }
-    //       }
-    //     })
-    //   }
-    //   sizeList();
+                select.append(`
+                                        <option value="${obj.branch_name}">${obj.branch_name}</option>
+                                    `)
+              })
+            }
+          }
+        })
+      }
+      sizeList();
 
-    //   function colorList() {
+      function colorList() {
 
-    //     $.ajax({
-    //       url: 'ajax',
-    //       type: 'get',
+        $.ajax({
+          url: 'ajax',
+          type: 'get',
 
-    //       success: function (response) {
-    //         var result = JSON.parse(response);
+          success: function (response) {
+            var result = JSON.parse(response);
 
-    //         if (status.data == "Success") {
+            if (status.data == "Success") {
 
-    //           var data = result.data;
+              var data = result.data;
 
-    //           var select = $("#proColor");
+              var select = $("#proColor");
 
-    //           data.map(obj => {
+              data.map(obj => {
 
-    //             select.append(`<option value=${obj.backend}> ${obj.backend} </option>
-    //             `)
-    //           })
+                select.append(`<option value=${obj.backend}> ${obj.backend} </option>
+                `)
+              })
 
-    //         }
-    //       }
-
-
-    //     })
+            }
+          }
 
 
-    //   }
-    //   colorList();
+        })
+
+
+      }
+      colorList();
 
     });
   </script>
